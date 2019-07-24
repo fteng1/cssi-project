@@ -9,8 +9,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
+        welcome_template = JINJA_ENVIRONMENT.get_template('index.html')
+        self.response.write("This is the beginning of our project.")
 
-    def post(self):
+
 
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
