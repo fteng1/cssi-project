@@ -2,12 +2,9 @@
 
 /* Below contains CSS for log_in.html */
 .login {
-  max-width: 500px;
   background-color: white;
   display: flex;
-  margin: auto;
   flex-direction: column;
-  min-height: 90vh;
 }
 
 .header {
@@ -27,8 +24,6 @@
 .team-intro {
   background-color: white;
   display: flex;
-  width: 33.33%;
-  margin: 10px;
 }
 
 .team-intro:after {
@@ -37,6 +32,23 @@
   clear: both;
 }
 
+#kflorendo-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
+
+#fteng-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
+
+#amanhey-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
 
 /* Below contains CSS for welcome_back.html */
 
