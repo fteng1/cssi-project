@@ -1,13 +1,17 @@
 @import "compass/css3";
 
 /* Below contains CSS for log_in.html */
-html {
+.login {
+  max-width: 500px;
   background-color: white;
   display: flex;
+  margin: auto;
+  flex-direction: column;
+  min-height: 90vh;
 }
 
 .header {
-  background-color: gray;
+  background-color: #FCC3E4;
   height: 30px;
   padding: 8px;
 }
@@ -19,23 +23,12 @@ html {
   display: flex;
 }
 
-#florendo {
-  background-color: gray;
-  flex: 33.33%
-}
-
-#teng {
-  background-color: gray;
-  flex: 33.33%
-}
-
-#manhey {
-  background-color: gray;
-  flex-direction: : 33.33%
-}
 
 .team-intro {
   background-color: white;
+  display: flex;
+  width: 33.33%;
+  margin: 10px;
 }
 
 .team-intro:after {
