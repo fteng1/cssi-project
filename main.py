@@ -17,7 +17,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        welcome_template = JINJA_ENVIRONMENT.get_template('templates/log_in.html')
+        calendar_template = JINJA_ENVIRONMENT.get_template('templates/log_in.html')
         self.response.write("This is the beginning of our project.")
         self.response.write(welcome_template.render())
 
@@ -25,6 +25,11 @@ class infoPage(webapp2.RequestHandler):
     def get(self):
         info_template = JINJA_ENVIRONMENT.get_template('templates/info_page.html')
         self.response.write(info_template.render())
+
+class CalendarPage(webapp2.RequestHandler):
+    def get(self):
+        welcome_template = JINJA_ENVIRONMENT.get_template('templates/calendar.html')
+        self.response.write(calendar_template.render())
 
 
 #https://www.dw.com/image/48688022_303.jpg
