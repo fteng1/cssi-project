@@ -21,6 +21,10 @@ class MainPage(webapp2.RequestHandler):
         self.response.write("This is the beginning of our project.")
         self.response.write(welcome_template.render())
 
+class infoPage(webapp2.RequestHandler):
+    def get(self):
+        info_template = JINJA_ENVIRONMENT.get_template('templates/info_page.html')
+        self.response.write(info_template.render())
 
 
 #https://www.dw.com/image/48688022_303.jpg
