@@ -2,6 +2,14 @@ import webapp2
 import jinja2
 import os
 
+from google.appengine.ext import ndb
+
+class User(ndb.Model):
+    user_id = ndb.StringProperty(required=True)
+    name = ndb.StringProperty(required=True)
+    dates = ndb.JsonProperty(required=True)
+
+
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
