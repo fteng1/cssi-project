@@ -2,23 +2,40 @@
 
 /* Below contains CSS for log_in.html */
 html {
-  background-color: pink;
-  text-align: center;
-}
-
-.firstpage {
   background-color: white;
-  border: 2px solid black;
+  display: flex;
 }
 
-.column {
-  float: left;
-  width: 33.33%;
+.header {
+  background-color: gray;
+  height: 30px;
+  padding: 8px;
+}
+.header h1 {
+  display: inline;
 }
 
-#team-intro {
+.team-intro {
+  display: flex;
+}
+
+#florendo {
+  background-color: gray;
+  flex: 33.33%
+}
+
+#teng {
+  background-color: gray;
+  flex: 33.33%
+}
+
+#manhey {
+  background-color: gray;
+  flex-direction: : 33.33%
+}
+
+.team-intro {
   background-color: white;
-  border: 2px solid black;
 }
 
 .team-intro:after {
@@ -27,15 +44,6 @@ html {
   clear: both;
 }
 
-.circle {
-  position: inherit;
-  background-color: red;
-  height: 20px;
-  width: 20px;
-  shape-outside: circle(10%);
-  shape-margin: 1rem;
-  clip-path: circle(25%);
-}
 
 /* Below contains CSS for welcome_back.html */
 
