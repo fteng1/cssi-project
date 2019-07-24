@@ -1,1 +1,23 @@
 @import "compass/css3";
+
+html {
+  background-color: pink;
+  text-align: center;
+}
+
+.firstpage {
+  background-color: white;
+  border: 2px solid black;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+
+.team-intro:after {
+  content: "";
+  display: table;
+  clear: both;
+}
