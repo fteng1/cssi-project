@@ -3,6 +3,8 @@ import jinja2
 import os
 
 from google.appengine.ext import ndb
+from google.appengine.api import users
+
 
 class User(ndb.Model):
     user_id = ndb.StringProperty(required=True)
@@ -15,9 +17,11 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+user = users.get_current_user()
+
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        calendar_template = JINJA_ENVIRONMENT.get_template('templates/log_in.html')
+        welcome_template = JINJA_ENVIRONMENT.get_template('templates/log_in.html')
         self.response.write("This is the beginning of our project.")
         self.response.write(welcome_template.render())
 
@@ -28,7 +32,7 @@ class infoPage(webapp2.RequestHandler):
 
 class CalendarPage(webapp2.RequestHandler):
     def get(self):
-        welcome_template = JINJA_ENVIRONMENT.get_template('templates/calendar.html')
+        calendar_template = JINJA_ENVIRONMENT.get_template('templates/calendar.html')
         self.response.write(calendar_template.render())
 
 
