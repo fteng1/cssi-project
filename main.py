@@ -35,6 +35,7 @@ class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         self.response.write(welcome_template.render())
+
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
     ('/', MainPage),
