@@ -47,12 +47,16 @@ class MainPage(webapp2.RequestHandler):
             greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
                 nickname, logout_url)
         else:
-            login_url = users.create_login_url('/') #replace / with whatever url you want
+            login_url = users.create_login_url('/welcomePage') #replace / with whatever url you want
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
-        #print(user.user_id)
+class WelcomePage(webapp2.RequestHandler):
+    def get(self):
+        welcome_template = JINJA_ENVIRONMENT.get_template('templates/welcome_back.html')
+        self.response.write(welcome_template.render())
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/welcomePage', WelcomePage),
 ], debug=True)
