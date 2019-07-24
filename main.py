@@ -17,8 +17,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        welcome_template = JINJA_ENVIRONMENT.get_template('index.html')
-        self.response.write("This is the beginning of our project.")
+        welcome_template = JINJA_ENVIRONMENT.get_template('templates/index.html')
+        self.response.write(welcome_template.render())
 
 
 
