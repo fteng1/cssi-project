@@ -5,13 +5,7 @@ import os
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
-class ModelWithUser(ndb.Model):
-    user_id = ndb.StringProperty()
-    color = ndb.StringProperty()
 
-    @classmethod
-    def get_by_user(cls, user):
-        return cls.query().filter(cls.user_id == user.user_id()).get()
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
