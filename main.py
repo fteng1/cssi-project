@@ -13,12 +13,6 @@ class ModelWithUser(ndb.Model):
     def get_by_user(cls, user):
         return cls.query().filter(cls.user_id == user.user_id()).get()
 
-class User(ndb.Model):
-    user_id = ndb.StringProperty(required=True)
-    name = ndb.StringProperty(required=True)
-    dates = ndb.JsonProperty(required=True)
-
-
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
