@@ -1,5 +1,6 @@
 @import "compass/css3";
 
+/* Below contains CSS for log_in.html */
 html {
   background-color: pink;
   text-align: center;
@@ -15,9 +16,19 @@ html {
   width: 33.33%;
 }
 
+#team-intro {
+  background-color: white;
+  border: 2px solid black;
+}
 
 .team-intro:after {
   content: "";
   display: table;
   clear: both;
+}
+
+/* Below contains CSS for welcome_back.html */
+
+.header {
+  background-color: pink;
 }
