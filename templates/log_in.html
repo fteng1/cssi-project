@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>The Female's Almanac</title>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="790803748831-ne36d91e9mbis1ppugrrfoeun8gf7t8f.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+  <body>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <div class="firstpage" id="log-in">
+      <h1>Welcome to The Female's Almanac!</h1>
+      <h2>#ForWomen</h2>
+      <h3> Google log in here.</h3>
+    </div>
+
+    <div class="firstpage" id="purpose-statement">
+      <h1>The Female Almanac</h1>
+      <h4>CSSI GOOGLE LAX 2019</h4>
+      <h2>Our Purpose:</h2>
+      <p>We, the team, are focusing on the topic on feminine health, where the user can create reminders
+        towards taking their birth control method, doctor visits, and prescription pickups as well as providing vital information towards
+        birth control methods and sex education.</p>
+    </div>
+
+    <div class="firstpage" id="team-intro">
+      <div class="column" id="kflorendo">
+        <h3>Kiana Eunice Florendo</h3>
+        <p1>INSERT BIO HERE</p1>
+      </div>
+      <div class="column" id="fteng">
+        <h3>Felianne Teng</h3>
+        <p1>INSERT BIO HERE</p1>
+      </div>
+      <div class="column" id="amanhey">
+        <h3>Adrian Manhey</h3>
+        <p1>INSERT BIO HERE</p1></div>
+    </div>
+
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+    </script>
+
+    <a href="#" onclick="signOut();">Sign out</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+  </body>
+</html>
