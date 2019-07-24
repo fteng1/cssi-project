@@ -4,14 +4,9 @@ import os
 
 from google.appengine.ext import ndb
 from google.appengine.api import users
+from models import ModelWithUser
 
-class ModelWithUser(ndb.Model):
-    user_id = ndb.StringProperty()
-    color = ndb.StringProperty()
 
-    @classmethod
-    def get_by_user(cls, user):
-        return cls.query().filter(cls.user_id == user.user_id()).get()
 
 JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -35,6 +30,12 @@ class MainPage(webapp2.RequestHandler):
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
+        my_users = ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1)
+        if len(my_users) == 1:
+            current_user = my_users[0]
+        else:
+            current_user = ModelWithUser(user_id = user.user_id())
+            current_user.put()
         #print(user.user_id)
 
 class WelcomePage(webapp2.RequestHandler):
