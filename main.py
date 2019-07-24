@@ -18,11 +18,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class MainPage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('templates/log_in.html')
-<<<<<<< HEAD
         self.response.write("This is the beginning of our project.")
-=======
         self.response.write(welcome_template.render())
->>>>>>> 2ca6d09b169d74d5762972c630e3eeb9898102e6
 
 
 
