@@ -3,9 +3,13 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /.*
+- url: /welcomePage
   script: main.app
   login: required
+
+- url: /.*
+  script: main.app
+  login: optional
 
 libraries:
 - name: webapp2
