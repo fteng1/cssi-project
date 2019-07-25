@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Calendar</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <h1>Calendar Page</h1>
-    <h2>Add an event</h2>
+    <h1 class="header">Calendar Page</h1>
+    <h2>Add an Event</h2>
     <form method="post">
       <input type="datetime-local" name="starttime">
       <select name="event-type">
@@ -17,10 +18,14 @@
       </select>
       <input type="submit" name="action" value="Add to Calendar">
     </form>
+    <br> 
+    <form id="go_back" method=GET action="/welcome">
+      <button>Go back</button>
+    </form>
     <h2>Your Events</h2>
     {% for event in event_list %}
       <div class="event">
-        <p>{{event.start.strftime("%c")}} {{event.type}}</p>
+        <p>{{event.start.strftime("%c")}}: {{event.type}}</p>
         <form method="post">
           <input type="text" name="event-id" value="{{event.key}}" hidden>
           <input type="submit" name="action" value="Delete Event">

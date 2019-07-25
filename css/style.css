@@ -515,3 +515,8 @@ p {
  margin-left: 20px;
  margin-right: 20px;
 }
+
+/* Below contains css for the calendar.html */
+.event {
+  background-color: pink;
+}

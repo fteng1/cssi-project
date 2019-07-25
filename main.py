@@ -109,7 +109,7 @@ class CalendarPage(webapp2.RequestHandler):
 
             # generates the Google Calendar link, stores the event in the database and renders the page
             calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
-            event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_url)
+            event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_link)
             event.put()
             calendar_dict = {
                 "calendar_link": calendar_link,
@@ -129,6 +129,6 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/welcome', WelcomePage),
     ('/profile', ProfilePage),
-    #('/info', Infopage),
+    # ('/info', Infopage),
     ('/calendar', CalendarPage),
 ], debug=True)
