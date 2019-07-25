@@ -5,6 +5,9 @@ import os
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from models import ModelWithUser
+from models import Event
+from datetime import datetime
+from datetime import timedelta
 
 
 
@@ -73,11 +76,19 @@ class CalendarPage(webapp2.RequestHandler):
     def get(self):
         calendar_template = JINJA_ENVIRONMENT.get_template('calendar.html')
         user = users.get_current_user()
-        self.response.write(calendar_template.render())
+
+        # renders user's current existing events
+        event_list = Event.query().filter(Event.owner == user.user_id()).order(Event.start).fetch()
+        event_dict = {
+            "event_list": event_list
+        }
+        self.response.write(calendar_template.render(event_dict))
 
     def post(self):
         calendar_template = JINJA_ENVIRONMENT.get_template('calendar_success.html')
         user = users.get_current_user()
+
+        # parses the inputted time and event type
         start_string = self.request.get('starttime')
         start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
         start_utc = start_date + timedelta(hours=7)
@@ -90,9 +101,15 @@ class CalendarPage(webapp2.RequestHandler):
             event_type_formatted = "Birth Control Medication"
         elif event_type == "doctor-appointment":
             event_type_formatted = "Doctor's Appointment"
+        elif event_type == "other":
+            event_type_formatted = "Other"
         else:
             event_type_formatted = "Pick Up Prescription"
+
+        # generates the Google Calendar link, stores the event in the database and renders the page
         calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
+        event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_url)
+        event.put()
         calendar_dict = {
             "calendar_link": calendar_link,
         }
@@ -103,5 +120,6 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/welcome', WelcomePage),
     ('/profile', ProfilePage),
+    #('/info', Infopage),
     ('/calendar', CalendarPage),
 ], debug=True)

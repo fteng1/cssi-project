@@ -11,3 +11,10 @@ class ModelWithUser(ndb.Model):
     @classmethod
     def get_by_user(cls, user):
         return cls.query().filter(cls.user_id == user.user_id()).get()
+
+class Event(ndb.Model):
+    start = ndb.DateTimeProperty()
+    end = ndb.DateTimeProperty()
+    type = ndb.StringProperty()
+    owner = ndb.StringProperty()
+    google_calendar = ndb.StringProperty()
