@@ -6,26 +6,24 @@
     <title>The Female Almanac</title>
   </head>
   <body>
-    <div class="header" id="welcomeback_header" style="background-color: pink">
-      <h1>The Female Almanac | {{username}}</h1>
+    <div class="welcomeheader" id="welcomeback_header" style="background-color: pink">
+      <form id="change_backward" method=GET action="/">
+        <button type="button" id="back_nav">Go back </button>
+        <h1>The Female Almanac | {{username}} </h1>
+      </form>
     </div>
-    <p> This will show the user their place to create events/reminders, or go to information page.</p>
 
-    <div class="page">
-      <div class="column">
-        <p>Welcome back, user! </p>
-      </div>
-      <div class="column">
-        <p>This will show the linked Google Calendar.</p>
+    <div class="main">
+      <h1>Welcome back! <br> What would you like to do?</h1>
+      <div class="nav">
+      <form id="information_page" method=GET action="/info">
+        <button type="button" id="inform_nav">Get Information</button>
+      </form>
+      <form id="calendar_page" method=GET action="/calendar">
+        <button type="button" id="calendar_nav">Create and Event</button>
+      </form>
       </div>
     </div>
-    <form id="change_backward" method=GET action="/">
-    <button>Go back</button>
-    </form>
-    <form id="information_page" method=GET action="/info">
-    <button>Information Page</button>
-  </form><form id="calendar_page" method=GET action="/calendar">
-    <button>Calendar Page</button>
-    </form>
+    
   </body>
 </html>
