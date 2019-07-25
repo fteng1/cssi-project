@@ -20,7 +20,7 @@ class MainPage(webapp2.RequestHandler):
         self.response.write(welcome_template.render())
         #the code for the sign-in and -out button
         user = users.get_current_user()
-        sel.response.write(user)
+        self.response.write(user)
         if user:
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
