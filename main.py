@@ -76,7 +76,13 @@ class CalendarPage(webapp2.RequestHandler):
     def get(self):
         calendar_template = JINJA_ENVIRONMENT.get_template('calendar.html')
         user = users.get_current_user()
-        self.response.write(calendar_template.render())
+
+        # renders user's current existing events
+        event_list = Event.query().filter(Event.owner == user.user_id()).order(Event.start).fetch()
+        event_dict = {
+            "event_list": event_list
+        }
+        self.response.write(calendar_template.render(event_dict))
 
     def post(self):
         calendar_template = JINJA_ENVIRONMENT.get_template('calendar_success.html')
@@ -102,7 +108,7 @@ class CalendarPage(webapp2.RequestHandler):
 
         # generates the Google Calendar link, stores the event in the database and renders the page
         calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
-        event = Event(start=start_utc, end=end_utc, type=event_type_formatted, owner=user.user_id())
+        event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_url)
         event.put()
         calendar_dict = {
             "calendar_link": calendar_link,

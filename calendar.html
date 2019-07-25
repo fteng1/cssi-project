@@ -17,5 +17,12 @@
       </select>
       <input type="submit" value="Add to Calendar">
     </form>
+    <h2>Your Events</h2>
+    {% for event in event_list %}
+      <div class="event">
+        <p>{{event.start.strftime("%c")}} {{event.type}}</p>
+        &nbsp&nbsp&nbsp<a href="{{event.google_calendar}}">Add to Google Calendar</a>
+      </div>
+    {% endfor %}
   </body>
 </html>
