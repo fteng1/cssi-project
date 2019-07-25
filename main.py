@@ -40,6 +40,7 @@ class MainPage(webapp2.RequestHandler):
 class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
+        username = users.get_current_user()
         welcome_dict = {
             "username": username,
         }
