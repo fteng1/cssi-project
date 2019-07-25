@@ -8,11 +8,13 @@
   <body>
     <h1>{{nickname}}</h1>
     <img src="{{image_source}}">
-    <h2>{{user}}</h2>
+    <h2>Username: {{user}}</h2>
     <form method=POST action="/profile">
       Your Nickname:<br>
-      <input type="text" name="Nickname" value="{{username}}">
-      <input type="submit" value="Update">
+      <input type="text" name="Nickname">
+      <br>Your Profile Picture Url:<br>
+      <input type="text" name="image_source">
+      <br><input type="submit" value="Update">
     </form>
     <!--<h2>Date Joined</h2>
     <h2>

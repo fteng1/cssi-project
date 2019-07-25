@@ -77,15 +77,16 @@ def user_profile(self,create_new_user,update_source,updated_value):
         my_profile.user_id = user.user_id()
         my_profile.put()
 
+
 class ProfilePage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         my_nickname = self.request.get('Nickname')
         my_profile = ModelWithUser(nickname=my_nickname,user_id=user.user_id())
         profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
-        imageSource = "https://cdn.pixabay.com/photo/2018/10/30/16/06/water-lily-3784022__340.jpg"
+        profile_pic = my_profile.profile_pic
         profile_dict = {
-            "image_source": imageSource,
+            "image_source": profile_pic,
             "nickname": my_nickname,
             "user_id": my_profile.user_id,
             #"Date Joined": "2019",
@@ -94,19 +95,30 @@ class ProfilePage(webapp2.RequestHandler):
         self.response.write(profile_template.render(profile_dict))
 
     def post(self):
-        imageSource = "https://cdn.pixabay.com/photo/2018/10/30/16/06/water-lily-3784022__340.jpg"
         user = users.get_current_user()
-        my_nickname = self.request.get('Nickname')
-        my_profile = ModelWithUser(nickname=my_nickname,user_id=user.user_id())
+        my_profile = check_profile_exists(ModelWithUser())
+        my_profile = ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch()
+        my_profile = my_profile[0]
+        if self.request.get('Nickname') == "":
+            my_nickname = my_profile.nickname
+        else:
+            my_nickname = self.request.get('Nickname')
+            user_profile(self,0,'Nickname',my_nickname)
+
+        if self.request.get('image_source') == "":
+            profile_pic = my_profile.profile_pic
+        else:
+            profile_pic = self.request.get('image_source')
+            my_profile.profile_pic = profile_pic
+            my_profile.user_id = user.user_id()
+            my_profile.put()
+
         profile_dict = {
-            "image_source": imageSource,
+            "image_source": profile_pic,
             "nickname": my_nickname,
             "user": user,
-            "Date Joined": "",
-            "Last Updated": "",
         }
         #update the nickname in the datastore
-        user_profile(self,0,'Nickname',my_nickname)
 
         profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
         self.response.write(profile_template.render(profile_dict))
