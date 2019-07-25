@@ -29,7 +29,7 @@ class MainPage(webapp2.RequestHandler):
 
         if user:
             logout_url = users.create_logout_url('/')
-            if current_user is None:
+            if current_user.first_name is None:
                 greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
                     current_user.nickname, logout_url)
             else:
