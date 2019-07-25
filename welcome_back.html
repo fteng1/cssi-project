@@ -9,11 +9,6 @@
     <div class="header" id="welcomeback_header" style="background-color: pink">
       <h1>The Female Almanac | {{username}}</h1>
     </div>
-    <form method=POST action="/welcome">
-      Your Nickname:<br>
-      <input type="text" name="Nickname" value="{{username}}">
-      <input type="submit" value="Update">
-    </form>
     <p> This will show the user their place to create events/reminders, or go to information page.</p>
 
     <div class="page">
@@ -25,14 +20,17 @@
       </div>
     </div>
     <w  class="welcome_page_buttons">
-  <form id="change_backward" method=GET action="/">
-    <button>Go back</button>
-    </form>
   <form id="information_page" method=GET action="/info">
     <button>Information Page</button>
     </form>
   <form id="calendar_page" method=GET action="/calendar">
     <button>Calendar Page</button>
+    </form>
+  <form id="profile_page" method=GET action="/profile">
+    <button>Profile Page</button>
+    </form>
+  <form id="change_backward" method=GET action="/">
+    <button>Go back</button>
     </form>
   </w>
   </body>

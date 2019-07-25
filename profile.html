@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Profile</title>
+  </head>
+  <body>
+    <h1>{{nickname}}</h1>
+    <img src="{{image_source}}">
+    <h2>{{user}}</h2>
+    <form method=POST action="/welcome">
+      Your Nickname:<br>
+      <input type="text" name="Nickname" value="{{username}}">
+      <input type="submit" value="Update">
+    </form>
+    <!--<h2>Date Joined</h2>
+    <h2>
+    You joined on {profile.joined_on.strftime("%c")}}
+    </h2>
+    <h2>Last Updated</h2>
+    <h2>
+    You updated on {profile.updated_on.strftime("%c")}}
+    </h2> -->
+    <form id="welcome_page" method=GET action="/welcome">
+    <button>Go back</button>
+    </form>
+  </body>
+</html>

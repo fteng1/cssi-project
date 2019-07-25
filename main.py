@@ -80,28 +80,32 @@ def user_profile(self,create_new_user,update_source,updated_value):
 class ProfilePage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        self.response.write(welcome_template.render(welcome_dict(user)))
+        my_nickname = self.request.get('Nickname')
+        my_profile = ModelWithUser(nickname=my_nickname,user_id=user.user_id())
+        profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
+        imageSource = "https://cdn.pixabay.com/photo/2018/10/30/16/06/water-lily-3784022__340.jpg"
+        profile_dict = {
+            "image_source": imageSource,
+            "nickname": my_nickname,
+            "user_id": my_profile.user_id,
+            #"Date Joined": "2019",
+            #"Last Updated": "2019",
+        }
+        self.response.write(profile_template.render(profile_dict))
+
     def post(self):
         user = users.get_current_user()
         my_nickname = self.request.get('Nickname')
         my_profile = ModelWithUser(nickname=my_nickname,user_id=user.user_id())
-        my_profile.nickname = my_nickname
-        my_profile.user_id = user.user_id()
-        my_profile.put()
-        welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        self.response.write(welcome_template.render(welcome_dict(my_nickname)))
-    def post(self):
-        user = users.get_current_user()
-        my_nickname = self.request.get('Nickname')
-        my_profile = Profile(nickname=my_nickname,user_id=user.user_id())
-        my_profile.nickname = my_nickname
-        my_profile.user_id = my_user.my_user_id()
-        my_profile.put()
-        username = my_nickname
-        welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        username = my_nickname
-        welcome_dict(username)
+        profile_dict = {
+            "image_source": imageSource,
+            "nickname": my_nickname,
+            "user": user,
+            "Date Joined": "",
+            "Last Updated": "",
+        }
+        profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
+        self.response.write(profile_template.render(profile_dict()))
 
 class CalendarPage(webapp2.RequestHandler):
     def get(self):
