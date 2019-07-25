@@ -101,6 +101,7 @@ class CalendarPage(webapp2.RequestHandler):
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/welcome', WelcomePage)
-    ('/profile', ProfilePage)
+    ('/welcome', WelcomePage),
+    ('/profile', ProfilePage),
+    ('/calendar', CalendarPage),
 ], debug=True)
