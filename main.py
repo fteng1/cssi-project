@@ -94,6 +94,7 @@ class ProfilePage(webapp2.RequestHandler):
         self.response.write(profile_template.render(profile_dict))
 
     def post(self):
+        imageSource = "https://cdn.pixabay.com/photo/2018/10/30/16/06/water-lily-3784022__340.jpg"
         user = users.get_current_user()
         my_nickname = self.request.get('Nickname')
         my_profile = ModelWithUser(nickname=my_nickname,user_id=user.user_id())
@@ -104,8 +105,11 @@ class ProfilePage(webapp2.RequestHandler):
             "Date Joined": "",
             "Last Updated": "",
         }
+        #update the nickname in the datastore
+        user_profile(self,0,'Nickname',my_nickname)
+
         profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
-        self.response.write(profile_template.render(profile_dict()))
+        self.response.write(profile_template.render(profile_dict))
 
 class CalendarPage(webapp2.RequestHandler):
     def get(self):
