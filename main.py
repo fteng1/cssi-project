@@ -50,6 +50,35 @@ class WelcomePage(webapp2.RequestHandler):
         }
         self.response.write(welcome_template.render(welcome_dict))
 
+class CalendarPage(webapp2.RequestHandler):
+    def get(self):
+        calendar_template = JINJA_ENVIRONMENT.get_template('calendar.html')
+        user = users.get_current_user()
+        self.response.write(calendar_template.render())
+
+    def post(self):
+        calendar_template = JINJA_ENVIRONMENT.get_template('calendar_success.html')
+        user = users.get_current_user()
+        start_string = self.request.get('starttime')
+        start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
+        start_utc = start_date + timedelta(hours=7)
+        end_utc = start_utc + timedelta(hours=1)
+        calendar_url = "http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s"
+        calendar_start = start_utc.strftime("%Y%m%dT%H%M00Z")
+        calendar_end = end_utc.strftime("%Y%m%dT%H%M00Z")
+        event_type = self.request.get("event-type")
+        if event_type == "birth-control":
+            event_type_formatted = "Birth Control Medication"
+        elif event_type == "doctor-appointment":
+            event_type_formatted = "Doctor's Appointment"
+        else:
+            event_type_formatted = "Pick Up Prescription"
+        calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
+        calendar_dict = {
+            "calendar_link": calendar_link,
+        }
+        self.response.write(calendar_template.render(calendar_dict))
+
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
     ('/', MainPage),
