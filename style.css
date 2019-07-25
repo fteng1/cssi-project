@@ -16,7 +16,6 @@
   display: inline;
 }
 
-
 .team-intro {
   background-color: white;
   display: flex;
@@ -63,6 +62,25 @@ header {
 .main {
   background-color: pink;
 }
+
+h1 {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 24px;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  float: top;
+}
+
+p {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 14px;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+  }
 
 .bc-row1 {
   background-color: white;
