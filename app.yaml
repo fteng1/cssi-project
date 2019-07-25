@@ -6,6 +6,9 @@ handlers:
 - url: /welcome
   script: main.app
   login: required
+  
+- url: /css
+  static_dir: css
 
 - url: /.*
   script: main.app
