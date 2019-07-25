@@ -29,14 +29,14 @@ class MainPage(webapp2.RequestHandler):
 
         if user:
             logout_url = users.create_logout_url('/')
-            if current_user.first_name is None:
+            if current_user is None:
                 greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
                     current_user.nickname, logout_url)
             else:
                 greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
                     current_user.first_name, logout_url)
         else:
-            login_url = users.create_login_url('/welcomeBack') #replace / with whatever url you want
+            login_url = users.create_login_url('/welcome') #replace / with whatever url you want
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
@@ -45,13 +45,33 @@ class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         username = users.get_current_user()
+        self.response.write(welcome_template.render())
+
+class ProfilePage(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         welcome_dict = {
             "username": username,
         }
         self.response.write(welcome_template.render(welcome_dict))
+    def post(self):
+        user = users.get_current_user()
+        my_nickname = self.request.get('Nickname')
+        my_profile = Profile(nickname=my_nickname,user_id=user.user_id())
+        my_profile.nickname = my_nickname
+        my_profile.user_id = my_user.my_user_id()
+        my_profile.put()
+        username = my_nickname
+        welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
+        username = my_nickname
+        welcome_dict = {
+            "username": username,
+        }
 
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/welcomeBack', WelcomePage)
+    ('/welcome', WelcomePage)
+    ('/profile', ProfilePage)
 ], debug=True)
