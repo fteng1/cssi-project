@@ -105,5 +105,6 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/welcome', WelcomePage),
     ('/profile', ProfilePage),
-    ('/calendar', CalendarPage),
+    #('/info', Infopage),
+    #('/calendar', CalendarPage),
 ], debug=True)
