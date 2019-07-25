@@ -7,6 +7,7 @@ class ModelWithUser(ndb.Model):
     updated_on = ndb.DateTimeProperty(auto_now=True) #changes whenever its active
     first_name = ndb.StringProperty()
     last_name = ndb.StringProperty()
+    profile_pic =ndb.StringProperty(default="https://cdn.pixabay.com/photo/2018/10/30/16/06/water-lily-3784022__340.jpg")
 
     @classmethod
     def get_by_user(cls, user):

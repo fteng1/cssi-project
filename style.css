@@ -1,0 +1,185 @@
+@import "compass/css3";
+
+/* Below contains CSS for log_in.html */
+.login {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: #FCC3E4;
+  height: 30px;
+  padding: 8px;
+}
+.header h1 {
+  display: inline;
+}
+
+
+.team-intro {
+  background-color: white;
+  display: flex;
+  width: 33.33%
+}
+
+.team-intro:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#kflorendo-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
+
+#fteng-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
+
+#amanhey-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
+
+/* Below contains CSS for welcome_back.html */
+.welcome_page_buttons {
+  width: 300px;
+}
+
+/* Below contains CSS for info.html */
+.birthcontrol {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  width: 33.33%
+}
+header {
+  background-color: pink;
+}
+.bc-implant {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  width: 33.33%
+}
+
+.iud {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  width: 33.33%
+}
+.bc-shot {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-end;
+  width: 33.33%
+}
+
+
+.bc-vaginal-ring {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-start;
+  width: 33.33%
+}
+
+.bc-patch {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: center;
+  width: 33.33%
+}
+.bc-pill {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-end;
+  width: 33.33%
+}
+
+
+.condom {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-start;
+  width: 33.33%
+}
+
+.internal-condom {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: center;
+  width: 33.33%
+}
+.diaphragm {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-end;
+  width: 33.33%
+}
+
+
+.bc-control-sponge {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-start;
+  width: 33.33%
+}
+
+.cerv-cup {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: center;
+  width: 33.33%
+}
+.spermicide {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-end;
+  width: 33.33%
+}
+
+.FAM {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-start;
+  width: 33.33%
+}
+
+.pull-out {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: center;
+  width: 33.33%
+}
+.breastfeeding {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-end;
+  width: 33.33%
+}
+
+
+.abstinence_outercourse {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-start;
+  width: 33.33%
+}
+
+.sterilization {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: center;
+  width: 33.33%
+}
+.vasectomy {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  align-self: flex-end;
+  width: 33.33%
+}
