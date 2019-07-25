@@ -14,3 +14,20 @@ indexes:
   properties:
   - name: owner
   - name: start
+
+- kind: Event
+  properties:
+  - name: owner
+  - name: start
+  - name: end
+  - name: type
+  - name: google_calendar
+
+- kind: ModelWithUser
+  properties:
+  - name: nickname
+  - name: user_id
+  - name: joined_on
+  - name: updated_on
+  - name: first_name
+  - name: last_name
