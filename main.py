@@ -18,7 +18,7 @@ class MainPage(webapp2.RequestHandler):
         main_template = JINJA_ENVIRONMENT.get_template('log_in.html')
         self.response.write(main_template.render())
         #the code for the sign-in and -out button
-        self.response.write(user)
+        user = users.get_current_user()
         if user:
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
