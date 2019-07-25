@@ -85,35 +85,44 @@ class CalendarPage(webapp2.RequestHandler):
         self.response.write(calendar_template.render(event_dict))
 
     def post(self):
-        calendar_template = JINJA_ENVIRONMENT.get_template('calendar_success.html')
         user = users.get_current_user()
 
-        # parses the inputted time and event type
-        start_string = self.request.get('starttime')
-        start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
-        start_utc = start_date + timedelta(hours=7)
-        end_utc = start_utc + timedelta(hours=1)
-        calendar_url = "http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s"
-        calendar_start = start_utc.strftime("%Y%m%dT%H%M00Z")
-        calendar_end = end_utc.strftime("%Y%m%dT%H%M00Z")
-        event_type = self.request.get("event-type")
-        if event_type == "birth-control":
-            event_type_formatted = "Birth Control Medication"
-        elif event_type == "doctor-appointment":
-            event_type_formatted = "Doctor's Appointment"
-        elif event_type == "other":
-            event_type_formatted = "Other"
-        else:
-            event_type_formatted = "Pick Up Prescription"
+        if self.request.get("action") == "Add to Calendar":
+            calendar_template = JINJA_ENVIRONMENT.get_template('calendar_success.html')
+            # parses the inputted time and event type
+            start_string = self.request.get('starttime')
+            start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
+            start_utc = start_date + timedelta(hours=7)
+            end_utc = start_utc + timedelta(hours=1)
+            calendar_url = "http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s"
+            calendar_start = start_utc.strftime("%Y%m%dT%H%M00Z")
+            calendar_end = end_utc.strftime("%Y%m%dT%H%M00Z")
+            event_type = self.request.get("event-type")
+            if event_type == "birth-control":
+                event_type_formatted = "Birth Control Medication"
+            elif event_type == "doctor-appointment":
+                event_type_formatted = "Doctor's Appointment"
+            elif event_type == "other":
+                event_type_formatted = "Other"
+            else:
+                event_type_formatted = "Pick Up Prescription"
 
-        # generates the Google Calendar link, stores the event in the database and renders the page
-        calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
-        event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_url)
-        event.put()
-        calendar_dict = {
-            "calendar_link": calendar_link,
-        }
-        self.response.write(calendar_template.render(calendar_dict))
+            # generates the Google Calendar link, stores the event in the database and renders the page
+            calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
+            event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_url)
+            event.put()
+            calendar_dict = {
+                "calendar_link": calendar_link,
+            }
+            self.response.write(calendar_template.render(calendar_dict))
+        else:
+            key = self.request.get("event-id")
+            event_list = Event.query().filter(Event.owner == user.user_id()).fetch()
+            for event in event_list:
+                if str(event.key) == key:
+                    selected_event = event
+            selected_event.key.delete()
+            self.get()
 
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
