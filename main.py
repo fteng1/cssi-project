@@ -15,11 +15,9 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        welcome_template = JINJA_ENVIRONMENT.get_template('log_in.html')
-        self.response.write("This is the beginning of our project.")
-        self.response.write(welcome_template.render())
+        main_template = JINJA_ENVIRONMENT.get_template('log_in.html')
+        self.response.write(main_template.render())
         #the code for the sign-in and -out button
-        user = users.get_current_user()
         self.response.write(user)
         if user:
             nickname = user.nickname()
@@ -42,7 +40,10 @@ class MainPage(webapp2.RequestHandler):
 class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        self.response.write(welcome_template.render())
+        welcome_dict = {
+            "username": username,
+        }
+        self.response.write(welcome_template.render(welcome_dict))
 
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
