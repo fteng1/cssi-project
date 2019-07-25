@@ -329,3 +329,8 @@ p {
   width: 33.33%;
   margin-bottom: 10px;
 }
+
+/* Below contains css for the calendar.html */
+.event {
+  background-color: rgb(147, 128, 108, 0.1);
+}
