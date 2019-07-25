@@ -6,6 +6,18 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <h1>Calendar Page</h1>
+    <h2>Add an event</h2>
+    <form method="post">
+      <input type="datetime-local" name="starttime">
+      <select name="event-type">
+        <option value="birth-control">Birth Control Medication</option>
+        <option value="doctor-appointment">Doctor's Appointment</option>
+        <option value="prescription-pickup">Pick Up Prescription</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="submit" value="Add to Calendar">
+    </form>
     <div id="calendar_header">
       <header id="calendar_title">The Female's Alamanac - Calendar
         <form id="go_back" method=GET action="/welcome">
@@ -44,5 +56,8 @@
       {% endfor %}
       </div>
     </div>
+    <form id="welcome_page" method=GET action="/welcome">
+    <button>Go back</button>
+    </form>
   </body>
 </html>
