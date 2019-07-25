@@ -3,7 +3,7 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /welcomePage
+- url: /welcome
   script: main.app
   login: required
 
