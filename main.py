@@ -92,6 +92,8 @@ class CalendarPage(webapp2.RequestHandler):
             event_type_formatted = "Birth Control Medication"
         elif event_type == "doctor-appointment":
             event_type_formatted = "Doctor's Appointment"
+        elif event_type == "other":
+            event_type_formatted = "Other"
         else:
             event_type_formatted = "Pick Up Prescription"
         calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
