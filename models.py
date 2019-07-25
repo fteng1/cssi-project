@@ -17,3 +17,4 @@ class Event(ndb.Model):
     end = ndb.DateTimeProperty()
     type = ndb.StringProperty()
     owner = ndb.StringProperty()
+    google_calendar = ndb.StringProperty()
