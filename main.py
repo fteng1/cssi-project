@@ -18,8 +18,9 @@ class MainPage(webapp2.RequestHandler):
         welcome_template = JINJA_ENVIRONMENT.get_template('log_in.html')
         self.response.write("This is the beginning of our project.")
         self.response.write(welcome_template.render())
-
+        #the code for the sign-in and -out button
         user = users.get_current_user()
+        sel.response.write(user)
         if user:
             nickname = user.nickname()
             logout_url = users.create_logout_url('/')
@@ -30,13 +31,13 @@ class MainPage(webapp2.RequestHandler):
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
+
         my_users = ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1)
         if len(my_users) == 1:
             current_user = my_users[0]
         else:
             current_user = ModelWithUser(user_id = user.user_id())
             current_user.put()
-        #print(user.user_id)
 
 class WelcomePage(webapp2.RequestHandler):
     def get(self):
