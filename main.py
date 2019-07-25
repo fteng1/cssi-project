@@ -16,8 +16,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        main_template = JINJA_ENVIRONMENT.get_template('log_in.html')
-        self.response.write(main_template.render())
         #the code for the sign-in and -out button
         user = users.get_current_user()
         if ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1) is not None:
@@ -27,15 +25,17 @@ class MainPage(webapp2.RequestHandler):
             logout_url = users.create_logout_url('/')
             if current_user is None:
                 greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
-                    current_user.nickname, logout_url)
+                    current_user.first_name, logout_url)
             else:
                 greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
-                    current_user.first_name, logout_url)
+                    current_user.nickname, logout_url)
         else:
             login_url = users.create_login_url('/welcome') #replace / with whatever url you want
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
+        main_template = JINJA_ENVIRONMENT.get_template('log_in.html')
+        self.response.write(main_template.render())
 
 def welcome_dict(nameValue):
     welcome_dict = {
