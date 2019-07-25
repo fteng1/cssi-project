@@ -1,0 +1,563 @@
+@import "compass/css3";
+
+/* Below contains CSS for log_in.html */
+.login {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background-color: #FCC3E4;
+  height: 30px;
+  padding: 8px;
+}
+.header h1 {
+  display: inline;
+}
+
+.team-intro {
+  background-color: white;
+  display: flex;
+  width: 33.33%
+}
+
+.team-intro:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#kflorendo-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
+
+#fteng-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
+
+#amanhey-bio {
+  border: 2px solid red;
+  border-radius: 5px;
+  margin: auto;
+}
+
+/* Below contains CSS for welcome_back.html */
+#welcomebackheader {
+  display: flex;
+  flex-direction: row;
+}
+
+#welcomeback_title {
+  text-align: center;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 32px;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  background-color: pink;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#back_nav {
+  display: flex;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left: 20px;
+
+
+}
+.nav {
+  display: flex;
+  justify-content: center;
+}
+#inform_nav {
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 20px
+}
+
+#calendar_nav {
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.main h1 {
+  text-align: center;
+  font-size: 45px;
+  padding-top: 120px;
+  padding-bottom: 50px;
+  line-height: 2cm;
+}
+/* Below contains CSS for info.html */
+
+#info_header {
+  text-align: center;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 32px;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  background-color: pink;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+
+.main_bc {
+  background-color: white;
+}
+
+h1 {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 24px;
+  font-style: italic;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  float: top;
+}
+
+
+
+p {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+  }
+
+.bc-row1 {
+  background-color: whitesmoke;
+  display: flex;
+  width: 33.33%;
+  padding: 10px;
+  margin: auto;
+  min-height: 65vh;
+  min-width: 95%;
+}
+
+.bc-row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.bc-row2 {
+  background-color: whitesmoke;
+  display: flex;
+  width: 33.33%;
+  padding: 10px;
+  margin: auto;
+  min-height: 65vh;
+  min-width: 95%;
+}
+
+.bc-row3:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.bc-row3 {
+  background-color: whitesmoke;
+  display: flex;
+  width: 33.33%;
+  padding: 10px;
+  margin: auto;
+  min-height: 65vh;
+  min-width: 95%;
+}
+
+.bc-row3:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.bc-row4 {
+  background-color: whitesmoke;
+  display: flex;
+  width: 33.33%;
+  padding: 10px;
+  margin: auto;
+  min-height: 65vh;
+  min-width: 95%;
+}
+.bc-row4:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.bc-row5 {
+  background-color: whitesmoke;
+  display: flex;
+  width: 33.33%;
+  padding: 10px;
+  margin: auto;
+  min-height: 65vh;
+  min-width: 95%;
+}
+
+.bc-row5:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.bc-row6 {
+  background-color: whitesmoke;
+  display: flex;
+  align-self: flex-end;
+  width: 33.33%;
+  padding: 10px;
+  margin: auto;
+  min-height: 65vh;
+  min-width: 95%;
+}
+
+.bc-row6:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.bc-implant {
+ background-color: rgb(147, 128, 108, 0.1);
+ display: flex;
+ min-height: 60vh;
+ width: 33.33%;
+ margin-bottom: 10px;
+ margin-right: 20px;
+ flex-direction: column;
+ align-items: center;
+}
+
+.bc-implant p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.iud {
+ background-color: rgb(147, 128, 108, 0.1);
+ display: flex;
+ min-height: 60vh;
+ width: 33.33%;
+ margin-bottom: 10px;
+ margin-right: 20px;
+ flex-direction: column;
+ align-items: center;
+}
+
+.iud p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.bc-shot {
+ background-color: rgb(147, 128, 108, 0.1);
+ display: flex;
+ min-height: 65vh;
+ width: 33.33%;
+ margin-bottom: 10px;
+ flex-direction: column;
+ align-items: center;
+}
+
+.bc-shot p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.bc-vaginal-ring{
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bc-vaginal-ring p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.bc-patch {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bc-patch p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+
+.bc-pill {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bc-pill p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.condom {
+   background-color: rgb(147, 128, 108, 0.1);
+   display: flex;
+   min-height: 65vh;
+   width: 33.33%;
+   margin-bottom: 10px;
+   margin-right: 20px;
+   flex-direction: column;
+   align-items: center;
+}
+
+.condom p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.internal-condom {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.internal-condom p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.diaphragm {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.diaphragm p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.bc-control-sponge {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bc-control-sponge p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.cerv-cup {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cerv-cup p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.spermicide {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spermicide p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.FAM {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FAM p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.pull-out {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pull-out p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.breastfeeding {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.breastfeeding p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.abstinence_outercourse {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.abstinence_outercourse p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.sterilization {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sterilization p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+.vasectomy {
+  background-color: rgb(147, 128, 108, 0.1);
+  display: flex;
+  min-height: 65vh;
+  width: 33.33%;
+  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vasectomy p {
+ margin-left: 20px;
+ margin-right: 20px;
+}
+
+
+/* Below contains css for the calendar.html */
+
+.create_event {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.main_calendar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+#calendar_title {
+  text-align: center;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 32px;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+  background-color: pink;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#calendar_header {
+  display: flex;
+  flex-direction: row;
+}
