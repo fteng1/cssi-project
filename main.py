@@ -5,6 +5,7 @@ import os
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from models import ModelWithUser
+from models import Event
 from datetime import datetime
 from datetime import timedelta
 
@@ -80,6 +81,8 @@ class CalendarPage(webapp2.RequestHandler):
     def post(self):
         calendar_template = JINJA_ENVIRONMENT.get_template('calendar_success.html')
         user = users.get_current_user()
+
+        # parses the inputted time and event type
         start_string = self.request.get('starttime')
         start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
         start_utc = start_date + timedelta(hours=7)
@@ -96,7 +99,11 @@ class CalendarPage(webapp2.RequestHandler):
             event_type_formatted = "Other"
         else:
             event_type_formatted = "Pick Up Prescription"
+
+        # generates the Google Calendar link, stores the event in the database and renders the page
         calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
+        event = Event(start=start_utc, end=end_utc, type=event_type_formatted, owner=user.user_id())
+        event.put()
         calendar_dict = {
             "calendar_link": calendar_link,
         }
