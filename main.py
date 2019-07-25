@@ -19,23 +19,27 @@ class MainPage(webapp2.RequestHandler):
         self.response.write(main_template.render())
         #the code for the sign-in and -out button
         user = users.get_current_user()
+        my_users = ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1)
+
+        if len(my_users) == 1:
+            current_user = my_users[0]
+        else:
+            current_user = ModelWithUser(user_id=user.user_id(), nickname=user.nickname())
+            current_user.put()
+
         if user:
-            nickname = user.nickname()
             logout_url = users.create_logout_url('/')
-            greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
-                nickname, logout_url)
+            if current_user is None:
+                greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
+                    current_user.nickname, logout_url)
+            else:
+                greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
+                    current_user.first_name, logout_url)
         else:
             login_url = users.create_login_url('/welcomeBack') #replace / with whatever url you want
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
-
-        my_users = ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1)
-        if len(my_users) == 1:
-            current_user = my_users[0]
-        else:
-            current_user = ModelWithUser(user_id = user.user_id())
-            current_user.put()
 
 class WelcomePage(webapp2.RequestHandler):
     def get(self):
