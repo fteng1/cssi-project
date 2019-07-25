@@ -9,7 +9,7 @@ handlers:
 
 - url: /.*
   script: main.app
-  login: optional
+  login: required
 
 libraries:
 - name: webapp2

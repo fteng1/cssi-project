@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
       <link rel="stylesheet" href="style.css">
-    <title>USERNAME| The Female Almanac</title>
+    <title>{{username}}| The Female Almanac</title>
   </head>
   <body>
     <div class="header" id="welcomeback_header" style="background-color: pink">
@@ -19,6 +19,13 @@
         <p>This will show the linked Google Calendar.</p>
       </div>
     </div>
-
+    <form id="change_backward" method=GET action="/">
+    <button>Go back</button>
+    </form>
+    <form id="information_page" method=GET action="/info_page">
+    <button>Information Page</button>
+  </form><form id="calendar_page" method=GET action="/calendar_page">
+    <button>Calendar Page</button>
+    </form>
   </body>
 </html>
