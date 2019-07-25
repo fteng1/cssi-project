@@ -5,6 +5,8 @@ import os
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from models import ModelWithUser
+from datetime import datetime
+from datetime import timedelta
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -88,11 +90,56 @@ class ProfilePage(webapp2.RequestHandler):
         my_profile.user_id = user.user_id()
         my_profile.put()
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        welcome_dict(my_nickname)
+        self.response.write(welcome_template.render(welcome_dict(my_nickname)))
+    def post(self):
+        user = users.get_current_user()
+        my_nickname = self.request.get('Nickname')
+        my_profile = Profile(nickname=my_nickname,user_id=user.user_id())
+        my_profile.nickname = my_nickname
+        my_profile.user_id = my_user.my_user_id()
+        my_profile.put()
+        username = my_nickname
+        welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
+        username = my_nickname
+        welcome_dict(username)
+
+class CalendarPage(webapp2.RequestHandler):
+    def get(self):
+        calendar_template = JINJA_ENVIRONMENT.get_template('calendar.html')
+        user = users.get_current_user()
+        self.response.write(calendar_template.render())
+
+    def post(self):
+        calendar_template = JINJA_ENVIRONMENT.get_template('calendar_success.html')
+        user = users.get_current_user()
+        start_string = self.request.get('starttime')
+        start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
+        start_utc = start_date + timedelta(hours=7)
+        end_utc = start_utc + timedelta(hours=1)
+        calendar_url = "http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s"
+        calendar_start = start_utc.strftime("%Y%m%dT%H%M00Z")
+        calendar_end = end_utc.strftime("%Y%m%dT%H%M00Z")
+        event_type = self.request.get("event-type")
+        if event_type == "birth-control":
+            event_type_formatted = "Birth Control Medication"
+        elif event_type == "doctor-appointment":
+            event_type_formatted = "Doctor's Appointment"
+        elif event_type == "other":
+            event_type_formatted = "Other"
+        else:
+            event_type_formatted = "Pick Up Prescription"
+        calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
+        calendar_dict = {
+            "calendar_link": calendar_link,
+        }
+        self.response.write(calendar_template.render(calendar_dict))
+
 
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/welcome', WelcomePage),
     ('/profile', ProfilePage),
+    #('/info', Infopage),
+    ('/calendar', CalendarPage),
 ], debug=True)
