@@ -9,6 +9,11 @@
     <div class="header" id="welcomeback_header" style="background-color: pink">
       <h1>The Female Almanac | {{username}}</h1>
     </div>
+    <form method=POST action="/profile">
+      Your Nickname:<br>
+      <input type="text" name="Nickname" value="{{profile.nickname}}">
+      <input type="submit" value="Update">
+    </form>
     <p> This will show the user their place to create events/reminders, or go to information page.</p>
 
     <div class="page">
