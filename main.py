@@ -134,12 +134,17 @@ class CalendarPage(webapp2.RequestHandler):
         }
         self.response.write(calendar_template.render(calendar_dict))
 
+class Infopage(webapp2.RequestHandler):
+    def get(self):
+        info_template = JINJA_ENVIRONMENT.get_template('info.html')
+        user = users.get_current_user()
+        self.response.write(info_template.render())
 
 #https://www.dw.com/image/48688022_303.jpg
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/welcome', WelcomePage),
     ('/profile', ProfilePage),
-    #('/info', Infopage),
+    ('/info', Infopage),
     ('/calendar', CalendarPage),
 ], debug=True)

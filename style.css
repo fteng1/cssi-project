@@ -48,7 +48,9 @@
 }
 
 /* Below contains CSS for welcome_back.html */
-
+.welcome_page_buttons {
+  width: 300px;
+}
 
 /* Below contains CSS for info.html */
 .birthcontrol {
