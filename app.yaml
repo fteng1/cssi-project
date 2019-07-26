@@ -3,10 +3,7 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /welcome
-  script: main.app
-  login: required
-  
+
 - url: /css
   static_dir: css
 
