@@ -83,7 +83,7 @@ class ProfilePage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         my_profile = check_profile_exists(ModelWithUser())
-        profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
+        profile_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         profile_pic = my_profile.profile_pic
         my_nickname = my_profile.nickname
         profile_dict = {
@@ -121,7 +121,7 @@ class ProfilePage(webapp2.RequestHandler):
         }
         #update the nickname in the datastore
 
-        profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
+        profile_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         self.response.write(profile_template.render(profile_dict))
 
 class CalendarPage(webapp2.RequestHandler):
