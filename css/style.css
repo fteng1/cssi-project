@@ -24,6 +24,11 @@
   width: 100%
 }
 
+#log_in_image{
+  width: 80%;
+  align-self: center;
+}
+
 .team-intro:after {
   content: "";
   display: table;
