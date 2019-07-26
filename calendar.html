@@ -32,12 +32,12 @@
           </div>
           {% for event in event_list %}
             <div class="event">
-              <p>{{event.start.strftime("%c")}}: {{event.type}}</p>
-              <form method="post">
+              <p id="event-title">{{event.start.strftime("%c")}}: {{event.type}}</p>
+              <form method="post" id="delete-button">
                 <input type="text" name="event-id" value="{{event.key}}" hidden>
                 <input type="submit" name="action" value="Delete Event">
               </form>
-              &nbsp&nbsp&nbsp<a href="{{event.google_calendar}}">Add to Google Calendar</a>
+              &nbsp&nbsp&nbsp<a href="{{event.google_calendar}}" id="google-link">Add to Google Calendar</a>
             </div>
         {% endfor %}
         </div>

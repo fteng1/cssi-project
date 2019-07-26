@@ -656,3 +656,26 @@ p {
   display: table;
   clear: both;
 }
+
+.event {
+  background-color: pink;
+  padding-bottom: 4px;
+  width: 600px;
+}
+
+#delete-button {
+  margin-left: 3%;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+#event-title {
+  padding-top: 4px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+}
+
+#google-link {
+  padding-bottom: 10%;
+  margin-bottom: 10%
+}
