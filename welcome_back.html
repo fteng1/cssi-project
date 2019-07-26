@@ -7,7 +7,6 @@
   </head>
   <body>
     <div id="welcomeheader">
-      <header id="welcomeback_title"> The Female's Almanac | {{username}}</header>
         <form id="change_backward" method=GET action="/">
           <button id="back_nav">Go back </button>
         </form>
@@ -19,7 +18,7 @@
         <h1>Welcome back, {{username}}!</h1>
         <img src="{{image_source}}" style="width: 250px;height: 250px">
         <h2>{{username}}</h2>
-        <form method=POST action="/profile">
+        <form method=POST>
           Your Nickname:<br>
           <input type="text" name="Nickname">
           <br>Your Profile Picture Url:<br>
