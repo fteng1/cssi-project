@@ -65,6 +65,8 @@ def check_profile_exists(value):
     else:
         my_profile = value #will either be None of the Profile creator class
         #my_profile = Profile()
+        my_profile.user_id = user.user_id()
+        my_profile.put()
     return my_profile
 
 def user_profile(self,create_new_user,update_source,updated_value):
@@ -83,10 +85,10 @@ def user_profile(self,create_new_user,update_source,updated_value):
 class ProfilePage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        my_nickname = self.request.get('Nickname')
-        my_profile = ModelWithUser(nickname=my_nickname,user_id=user.user_id())
+        my_profile = check_profile_exists(ModelWithUser())
         profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
         profile_pic = my_profile.profile_pic
+        my_nickname = my_profile.nickname
         profile_dict = {
             "image_source": profile_pic,
             "nickname": my_nickname,
