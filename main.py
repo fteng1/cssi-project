@@ -19,9 +19,9 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         #the code for the sign-in and -out button
         user = users.get_current_user()
-        if ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1) is not None:
-            current_user = check_profile_exists(ModelWithUser())
-            current_user.put()
+        #if ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1) is not None:
+        current_user = check_profile_exists(ModelWithUser())
+        current_user.put()
         if user:
             logout_url = users.create_logout_url('/')
             if current_user is None:
@@ -47,14 +47,12 @@ def welcome_dict(nameValue):
 class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        username = users.get_current_user()
-        self.response.write(welcome_template.render())
+        my_user = check_profile_exists(ModelWithUser())
+        self.response.write(welcome_template.render(welcome_dict(my_user.nickname)))
     def post(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        nickname = self.request.get('Nickname')
-        self.response.write(welcome_template.render(welcome_dict(nickname)))
-        #update the nickname in the datastore
-        user_profile(self,0,'Nickname',nickname)
+        my_user = check_profile_exists(ModelWithUser())
+        self.response.write(welcome_template.render(welcome_dict(my_user.nickname)))
 
 def check_profile_exists(value):
     user = users.get_current_user()
@@ -64,6 +62,8 @@ def check_profile_exists(value):
     else:
         my_profile = value #will either be None of the Profile creator class
         #my_profile = Profile()
+        my_profile.user_id = user.user_id()
+        my_profile.put()
     return my_profile
 
 def user_profile(self,create_new_user,update_source,updated_value):
@@ -82,10 +82,10 @@ def user_profile(self,create_new_user,update_source,updated_value):
 class ProfilePage(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        my_nickname = self.request.get('Nickname')
-        my_profile = ModelWithUser(nickname=my_nickname,user_id=user.user_id())
+        my_profile = check_profile_exists(ModelWithUser())
         profile_template = JINJA_ENVIRONMENT.get_template('profile.html')
         profile_pic = my_profile.profile_pic
+        my_nickname = my_profile.nickname
         profile_dict = {
             "image_source": profile_pic,
             "nickname": my_nickname,
