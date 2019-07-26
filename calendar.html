@@ -6,41 +6,42 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <h1>Calendar Page</h1>
-    <h2>Add an Event</h2>
-    <form method="post">
-      <input type="datetime-local" name="starttime">
-      <select name="event-type">
-        <option value="birth-control">Birth Control Medication</option>
-        <option value="doctor-appointment">Doctor's Appointment</option>
-        <option value="prescription-pickup">Pick Up Prescription</option>
-        <option value="other">Other</option>
-      </select>
-      <input type="submit" name="action" value="Add to Calendar">
-    </form>
     <div id="calendar_header">
-      <header id="calendar_title">The Female's Almanac - Calendar
-      </header>
+      <form id="go_back" method=GET action="/welcome"><button id="calendar_backnav"type="button">Go back</button></form>
+      <h1>The Female's Almanac - Calendar</h1>
     </div>
+
     <div class="main_calendar">
-      <div class="users_list">
-        <div class="total_events">
-          <h2>Your Events</h2>
-        </div>
-        {% for event in event_list %}
-          <div class="event">
-            <p>{{event.start.strftime("%c")}}: {{event.type}}</p>
-            <form method="post">
-              <input type="text" name="event-id" value="{{event.key}}" hidden>
-              <input type="submit" name="action" value="Delete Event">
-            </form>
-            &nbsp&nbsp&nbsp<a href="{{event.google_calendar}}" target="_blank">Add to Google Calendar</a>
-          </div>
-      {% endfor %}
+      <div class="create_event">
+        <h2>Add an Event</h2>
+        <form method="post">
+          <input type="datetime-local" name="starttime">
+          <select name="event-type">
+            <option value="birth-control">Birth Control Medication</option>
+            <option value="doctor-appointment">Doctor's Appointment</option>
+            <option value="prescription-pickup">Pick Up Prescription</option>
+            <option value="other">Other</option>
+          </select>
+          <input type="submit" value="Add to Calendar">
+        </form>
       </div>
+
+        <div class="users_list">
+          <div class="total_events">
+            <h2>Your Events</h2>
+          </div>
+          {% for event in event_list %}
+            <div class="event">
+              <p>{{event.start.strftime("%c")}}: {{event.type}}</p>
+              <form method="post">
+                <input type="text" name="event-id" value="{{event.key}}" hidden>
+                <input type="submit" name="action" value="Delete Event">
+              </form>
+              &nbsp&nbsp&nbsp<a href="{{event.google_calendar}}">Add to Google Calendar</a>
+            </div>
+        {% endfor %}
+        </div>
     </div>
-    <form id="go_back" method=GET action="/welcome">
-      <button>Go back</button>
-    </form>
+
   </body>
 </html>
