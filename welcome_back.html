@@ -12,33 +12,42 @@
           <button type="button" id="back_nav">Go back </button>
         </form>
         <form id="change_backward" method=GET action="/"><button type="button" id="back_nav">Go back </button></form>
+<<<<<<< HEAD
+        <h1> The Female's Almanac | {{name-value}} </h1>
+=======
         <h1> The Female's Almanac | {{username}} </h1>
+>>>>>>> 48c87647e9c6819ecebc4c3747959ac9c71cb709
     </div>
-
-    <div class="main">
-      <h1>Welcome back! <br> What would you like to do?</h1>
-      <div class="nav">
-      <form id="information_page" method=GET action="/info">
-        <button id="inform_nav">Get Information</button>
-      </form>
-      <form id="calendar_page" method=GET action="/calendar">
-        <button id="calendar_nav">Create an Event</button>
-      </form>
+    <div class="main_welcomepg">
+      <div class="profile"id="user_profile">
+        <h1>Welcome back, {{nickname}}!</h1>
+        <img src="{{image_source}}" style="width: 250px;height: 250px">
+        <h2>{{user}}</h2>
+        <form method=POST action="/profile">
+          Your Nickname:<br>
+          <input type="text" name="Nickname">
+          <br>Your Profile Picture Url:<br>
+          <input type="text" name="image_source">
+          <br><input type="submit" value="Update">
+        </form>
+        <br><br><br><br><br><br><br><br><br><br><br>
       </div>
+
+      <div id="welcome_message">
+        <h1>What would you like to do?</h1>
+        <div class="nav">
+        <form id="information_page" method=GET action="/info">
+          <button id="inform_nav">Get Information</button>
+        </form>
+        <form id="calendar_page" method=GET action="/calendar">
+          <button id="calendar_nav">Create an Event</button>
+        </form>
+        <form id="profile_page" method=GET action="/profile">
+          <button id="profile_nav">Profile Page</button>
+          </form>
+        </div>
+      </div>
+
     </div>
-    <w  class="welcome_page_buttons">
-  <form id="information_page" method=GET action="/info">
-    <button>Information Page</button>
-    </form>
-  <form id="calendar_page" method=GET action="/calendar">
-    <button>Calendar Page</button>
-    </form>
-  <form id="profile_page" method=GET action="/profile">
-    <button>Profile Page</button>
-    </form>
-  <form id="change_backward" method=GET action="/">
-    <button>Go back</button>
-    </form>
-  </w>
   </body>
 </html>
