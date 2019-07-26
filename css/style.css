@@ -626,7 +626,7 @@ p {
 
 /* Below contains css for the calendar.html */
 .main_calendar {
-  font-size: 150%;
+  font-size: 165%;
 }
 
 .event_creator {
@@ -663,7 +663,8 @@ p {
 }
 .create_event {
   float: left;
-  width: 50%;
+  width: 49%;
+  padding: 5px;
 }
 
 .create_event:after {
