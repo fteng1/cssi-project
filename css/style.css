@@ -6,7 +6,9 @@
   display: flex;
   flex-direction: column;
 }
-
+#go_to_welcome,#go_to_calendar {
+  margin-block-end:0;
+}
 .header {
   background-color: #FCC3E4;
   height: 30px;
