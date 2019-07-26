@@ -688,6 +688,7 @@ p {
   background-color: pink;
   padding-bottom: 4px;
   width: 600px;
+  margin-left: 10px;
 }
 
 #delete-button {
