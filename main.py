@@ -47,14 +47,16 @@ def welcome_dict(nameValue):
 class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        user = users.get_current_user()
-        username = user.nickname
-        self.response.write(welcome_template.render(welcome_dict(username)))
+        username = users.get_current_user()
+        
+        name_dict = {
+            "nameValue":
+        }
+        self.response.write(welcome_template.render())
     def post(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        user = users.get_current_user()
-        username = user.nickname
-        self.response.write(welcome_template.render(welcome_dict(username)))
+        nameValue = self.request.get('Nickname')
+        self.response.write(welcome_template.render(welcome_dict(nameValue)))
         #update the nickname in the datastore
         user_profile(self,0,'Nickname',nickname)
 
