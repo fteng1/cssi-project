@@ -53,7 +53,13 @@ class WelcomePage(webapp2.RequestHandler):
     def post(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         my_user = check_profile_exists(ModelWithUser())
+        if self.request.get('Nickname') != "":
+            my_user.nickname = self.request.get('Nickname')
+        if self.request.get('image_source') != "":
+            my_user.profile_pic = self.request.get('image_source')
+        my_user.put()
         self.response.write(welcome_template.render(welcome_dict(my_user.nickname, my_user.profile_pic)))
+        # self.get()
 
 def check_profile_exists(value):
     user = users.get_current_user()
