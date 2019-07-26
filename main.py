@@ -38,9 +38,10 @@ class MainPage(webapp2.RequestHandler):
         main_template = JINJA_ENVIRONMENT.get_template('log_in.html')
         self.response.write(main_template.render())
 
-def welcome_dict(nameValue):
+def welcome_dict(nameValue, imgValue):
     welcome_dict = {
         "username": nameValue,
+        "image_source": imgValue
     }
     return welcome_dict
 
@@ -48,11 +49,11 @@ class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         my_user = check_profile_exists(ModelWithUser())
-        self.response.write(welcome_template.render(welcome_dict(my_user.nickname)))
+        self.response.write(welcome_template.render(welcome_dict(my_user.nickname, my_user.profile_pic)))
     def post(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         my_user = check_profile_exists(ModelWithUser())
-        self.response.write(welcome_template.render(welcome_dict(my_user.nickname)))
+        self.response.write(welcome_template.render(welcome_dict(my_user.nickname, my_user.profile_pic)))
 
 def check_profile_exists(value):
     user = users.get_current_user()
@@ -86,14 +87,7 @@ class ProfilePage(webapp2.RequestHandler):
         profile_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         profile_pic = my_profile.profile_pic
         my_nickname = my_profile.nickname
-        profile_dict = {
-            "image_source": profile_pic,
-            "nickname": my_nickname,
-            "user_id": my_profile.user_id,
-            #"Date Joined": "2019",
-            #"Last Updated": "2019",
-        }
-        self.response.write(profile_template.render(profile_dict))
+        self.response.write(profile_template.render(welcome_dict(my_nickname, profile_pic)))
 
     def post(self):
         user = users.get_current_user()
