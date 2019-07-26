@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
 }
-form {
-  margin:0;
+#go_to_welcome,#go_to_calendar {
+  margin-block-end:0;
 }
 .header {
   background-color: #FCC3E4;
