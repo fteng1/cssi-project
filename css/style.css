@@ -291,6 +291,7 @@ p {
 .bc-row5 {
   background-color: whitesmoke;
   display: flex;
+  text-align: center;
   width: 33.33%;
   padding: 10px;
   margin: auto;
