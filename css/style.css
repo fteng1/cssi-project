@@ -114,6 +114,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 #user_profile {
   float: left;
@@ -122,6 +123,7 @@
   border-right: 1px solid grey;
   padding-top: 50px;
   padding-bottom: 50px;
+  align-items: center;
 
 }
 
