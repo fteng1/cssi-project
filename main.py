@@ -19,9 +19,9 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         #the code for the sign-in and -out button
         user = users.get_current_user()
-        if ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1) is not None:
-            current_user = check_profile_exists(ModelWithUser())
-            current_user.put()
+        #if ModelWithUser.query().filter(ModelWithUser.user_id == user.user_id()).fetch(1) is not None:
+        current_user = check_profile_exists(ModelWithUser())
+        current_user.put()
         if user:
             logout_url = users.create_logout_url('/')
             if current_user is None:
