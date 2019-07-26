@@ -48,7 +48,8 @@ class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         username = users.get_current_user()
-        self.response.write(welcome_template.render())
+        nameValue = user.nickname
+        self.response.write(welcome_template.render(welcome_dict(nameValue))
     def post(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         user = users.get_current_user()
