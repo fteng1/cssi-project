@@ -8,6 +8,7 @@ from models import ModelWithUser
 from models import Event
 from datetime import datetime
 from datetime import timedelta
+from operator import itemgetter, attrgetter, methodcaller
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -165,6 +166,8 @@ class CalendarPage(webapp2.RequestHandler):
             event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_link)
             event.put()
             event_list = Event.query().filter(Event.owner == user.user_id()).order(Event.start).fetch()
+            event_list.append(event)
+            event_list = sorted(event_list, key=attrgetter('start'))
             event_dict = {
                 "event_list": event_list
             }
