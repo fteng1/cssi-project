@@ -145,33 +145,27 @@ class CalendarPage(webapp2.RequestHandler):
 
             # parses the inputted time and event type
             start_string = self.request.get('starttime')
-            start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
-            start_utc = start_date + timedelta(hours=7)
-            end_utc = start_utc + timedelta(hours=1)
-            calendar_url = "http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s"
-            calendar_start = start_utc.strftime("%Y%m%dT%H%M00Z")
-            calendar_end = end_utc.strftime("%Y%m%dT%H%M00Z")
-            event_type = self.request.get("event-type")
-            if event_type == "birth-control":
-                event_type_formatted = "Birth Control Medication"
-            elif event_type == "doctor-appointment":
-                event_type_formatted = "Doctor's Appointment"
-            elif event_type == "other":
-                event_type_formatted = "Other"
-            else:
-                event_type_formatted = "Pick Up Prescription"
+            if start_string != "":
+                start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
+                start_utc = start_date + timedelta(hours=7)
+                end_utc = start_utc + timedelta(hours=1)
+                calendar_url = "http://www.google.com/calendar/event?action=TEMPLATE&text=%s&dates=%s/%s"
+                calendar_start = start_utc.strftime("%Y%m%dT%H%M00Z")
+                calendar_end = end_utc.strftime("%Y%m%dT%H%M00Z")
+                event_type = self.request.get("event-type")
+                if event_type == "birth-control":
+                    event_type_formatted = "Birth Control Medication"
+                elif event_type == "doctor-appointment":
+                    event_type_formatted = "Doctor's Appointment"
+                elif event_type == "other":
+                    event_type_formatted = "Other"
+                else:
+                    event_type_formatted = "Pick Up Prescription"
 
-            # generates the Google Calendar link, stores the event in the database and renders the page
-            calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
-            event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_link)
-            event.put()
-            # event_list = Event.query().filter(Event.owner == user.user_id()).order(Event.start).fetch()
-            # event_list.append(event)
-            # event_list = sorted(event_list, key=attrgetter('start'))
-            # event_dict = {
-            #     "event_list": event_list
-            # }
-            # self.response.write(calendar_template.render(event_dict))
+                # generates the Google Calendar link, stores the event in the database and renders the page
+                calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
+                event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_link)
+                event.put()
         else:
             key = self.request.get("event-id")
             event_list = Event.query().filter(Event.owner == user.user_id()).fetch()
