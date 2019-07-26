@@ -48,18 +48,28 @@
   border: 2px solid red;
   border-radius: 5px;
   margin: auto;
+  margin-right: 2.5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #fteng-bio {
   border: 2px solid red;
   border-radius: 5px;
   margin: auto;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 #amanhey-bio {
   border: 2px solid red;
   border-radius: 5px;
   margin: auto;
+  margin-left: 2.5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 /* Below contains CSS for welcome_back.html */
