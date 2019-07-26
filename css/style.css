@@ -620,7 +620,13 @@ p {
 
 
 /* Below contains css for the calendar.html */
+.main_calendar {
+  font-size: 175%;
+}
 
+.event_creator {
+  font-size: 100%;
+}
 
 #calendar_header {
   text-align: center;
