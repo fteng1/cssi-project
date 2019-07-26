@@ -140,7 +140,6 @@ class CalendarPage(webapp2.RequestHandler):
         user = users.get_current_user()
 
         if self.request.get("action") == "Add to Calendar":
-            calendar_template = JINJA_ENVIRONMENT.get_template('calendar_success.html')
             # parses the inputted time and event type
             start_string = self.request.get('starttime')
             start_date = datetime.strptime(start_string, "%Y-%m-%dT%H:%M")
@@ -163,10 +162,7 @@ class CalendarPage(webapp2.RequestHandler):
             calendar_link = calendar_url % (event_type_formatted, calendar_start, calendar_end)
             event = Event(start=start_date, end=start_date + timedelta(hours=1), type=event_type_formatted, owner=user.user_id(), google_calendar=calendar_link)
             event.put()
-            calendar_dict = {
-                "calendar_link": calendar_link,
-            }
-            self.response.write(calendar_template.render(calendar_dict))
+            self.get()
         else:
             key = self.request.get("event-id")
             event_list = Event.query().filter(Event.owner == user.user_id()).fetch()

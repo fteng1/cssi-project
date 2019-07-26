@@ -590,27 +590,6 @@ p {
 
 /* Below contains css for the calendar.html */
 
-.create_event {
-  float: left;
-  width: 50%;
-}
-
-.create_event:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.users_list {
-  float: left;
-  width: 50%;
-}
-
-.users_list:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 #calendar_header {
   text-align: center;
@@ -639,4 +618,25 @@ p {
   margin-top: 10px;
   margin-left: 10px;
   float: left;
+}
+.create_event {
+  float: left;
+  width: 50%;
+}
+
+.create_event:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.users_list {
+  float: left;
+  width: 50%;
+}
+
+.users_list:after {
+  content: "";
+  display: table;
+  clear: both;
 }
