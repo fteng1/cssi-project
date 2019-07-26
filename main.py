@@ -48,17 +48,8 @@ class WelcomePage(webapp2.RequestHandler):
     def get(self):
         welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
         username = users.get_current_user()
-        
-        name_dict = {
-            "nameValue":
-        }
-        self.response.write(welcome_template.render())
-    def post(self):
-        welcome_template = JINJA_ENVIRONMENT.get_template('welcome_back.html')
-        nameValue = self.request.get('Nickname')
+        nameValue = user.nickname
         self.response.write(welcome_template.render(welcome_dict(nameValue)))
-        #update the nickname in the datastore
-        user_profile(self,0,'Nickname',nickname)
 
 def check_profile_exists(value):
     user = users.get_current_user()
